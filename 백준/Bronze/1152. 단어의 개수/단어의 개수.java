@@ -10,7 +10,7 @@ public class Main {
 		int sum = 0;
 		
 		while(st.hasMoreTokens()) {
-			String s = st.nextToken();
+			st.nextToken();
 			sum++;
 		}
 		System.out.println(sum);
