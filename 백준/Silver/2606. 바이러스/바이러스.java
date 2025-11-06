@@ -19,7 +19,6 @@ public class Main {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		
 		node = Integer.parseInt(br.readLine());
 		line = Integer.parseInt(br.readLine());
 	
@@ -34,22 +33,28 @@ public class Main {
 			
 			arr[a][b] = arr[b][a] =  1;	
 		}
-		
-			dfs(1);
 			
-			System.out.println(count-1);
+			System.out.println(bfs(1));
 		
 		}
-	public static void dfs(int start) {
-		
-		check[start] = true;
-		count++;
-		
-		for(int i = 0 ; i <= node ; i++) {
-			if(arr[start][i] == 1 && !check[i])
-				dfs(i);
-		}
-		
-	}
+    
+	public static int bfs(int start) {
+        check[start] = true;
+        q.offer(start);
+
+        while(!q.isEmpty()) {
+            int temp = q.poll(); //현재 위치 저장
+
+            for(int i=1; i<=node; i++) {
+                if(arr[temp][i] == 1 && !check[i]){
+                    q.offer(i);
+                    check[i] = true;
+                    count ++;
+                }
+            }
+        }
+
+        return count;
+    }
 	
 }
