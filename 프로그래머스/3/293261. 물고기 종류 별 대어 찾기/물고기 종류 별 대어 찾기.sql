@@ -1,0 +1,9 @@
+-- 코드를 작성해주세요
+SELECT f.ID, n.FISH_NAME, f.LENGTH
+FROM FISH_INFO f
+JOIN FISH_NAME_INFO n ON f.FISH_TYPE = n.FISH_TYPE
+WHERE f.LENGTH = (SELECT MAX(fi.LENGTH) 
+                FROM FISH_INFO fi
+                WHERE fi.FISH_TYPE = f.FISH_TYPE
+)
+ORDER BY f.ID;
